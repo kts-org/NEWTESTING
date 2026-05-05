@@ -1,7 +1,8 @@
-"""Fallback content generated due to invalid LLM JSON output."""
+import unittest
+from event_hub_producer import EventHubProducer
 
-def main() -> None:
-    print("TODO: implement logic for tests/test_event_hub_producer.py")
-
-if __name__ == "__main__":
-    main()
+class TestEventHubProducer(unittest.TestCase):
+    def test_send_message(self):
+        event_hub_producer = EventHubProducer('your_connection_string_here', 'your_event_hub_name_here')
+        message = {'id': 1, 'name': 'example', 'description': 'example description'}
+        event_hub_producer.send_message(message)
