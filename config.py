@@ -1,0 +1,5 @@
+API_ENDPOINT = 'https://api.example.com/data'
+API_AUTH_TOKEN = 'your_api_auth_token_here'
+INTERNAL_PROTOCOL_FORMAT = 'your_internal_protocol_format_here'
+EVENT_HUB_CONNECTION_STRING = 'your_event_hub_connection_string_here'
+EVENT_HUB_NAME = 'your_event_hub_name_here'
