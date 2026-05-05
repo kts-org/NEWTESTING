@@ -1,7 +1,19 @@
-"""Fallback content generated due to invalid LLM JSON output."""
+import requests
+import json
+from logger import Logger
 
-def main() -> None:
-    print("TODO: implement logic for api_client.py")
+class ApiClient:
+    def __init__(self, base_url, api_key):
+        self.base_url = base_url
+        self.api_key = api_key
+        self.logger = Logger()
 
-if __name__ == "__main__":
-    main()
+    def fetch_data(self, endpoint):
+        try:
+            headers = {'Authorization': f'Bearer {self.api_key}'}
+            response = requests.get(f'{self.base_url}{endpoint}', headers=headers)
+            response.raise_for_status()
+            return response.json()
+        except requests.RequestException as e:
+            self.logger.error(f'Error fetching data: {e}')
+            return None
