@@ -1,7 +1,17 @@
-"""Fallback content generated due to invalid LLM JSON output."""
+from azure.eventhub import EventHubProducerClient, EventData
+from logger import Logger
 
-def main() -> None:
-    print("TODO: implement logic for event_hub_producer.py")
+class EventHubProducer:
+    def __init__(self, connection_string, event_hub_name):
+        self.connection_string = connection_string
+        self.event_hub_name = event_hub_name
+        self.logger = Logger()
 
-if __name__ == "__main__":
-    main()
+    def send_message(self, message):
+        try:
+            producer = EventHubProducerClient.from_connection_string(self.connection_string, self.event_hub_name)
+            event_data = EventData(json.dumps(message))
+            producer.send([event_data])
+            self.logger.info(f'Message sent to Event Hub: {message}')
+        except Exception as e:
+            self.logger.error(f'Error sending message to Event Hub: {e}')
