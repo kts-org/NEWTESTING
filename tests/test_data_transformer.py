@@ -1,7 +1,11 @@
-"""Fallback content generated due to invalid LLM JSON output."""
+import unittest
+from data_transformer import DataTransformer
 
-def main() -> None:
-    print("TODO: implement logic for tests/test_data_transformer.py")
-
-if __name__ == "__main__":
-    main()
+class TestDataTransformer(unittest.TestCase):
+    def test_transform_data(self):
+        data_transformer = DataTransformer()
+        data = {'id': 1, 'name': 'example', 'description': 'example description'}
+        transformed_data = data_transformer.transform_data(data)
+        self.assertEqual(transformed_data['id'], 1)
+        self.assertEqual(transformed_data['name'], 'example')
+        self.assertEqual(transformed_data['description'], 'example description')
