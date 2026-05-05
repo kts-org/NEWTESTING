@@ -1,7 +1,9 @@
-"""Fallback content generated due to invalid LLM JSON output."""
+import logging
+from logger import Logger
 
-def main() -> None:
-    print("TODO: implement logic for error_handler.py")
+class ErrorHandler:
+    def __init__(self):
+        self.logger = Logger()
 
-if __name__ == "__main__":
-    main()
+    def handle_error(self, error):
+        self.logger.error(f'Error: {error}')
