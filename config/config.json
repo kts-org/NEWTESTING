@@ -1,0 +1,1 @@
+{"api_endpoint": "https://api.example.com/data", "api_auth": {"username": "username", "password": "password"}, "event_hub_connection": {"namespace": "eventhubnamespace", "eventhub_name": "eventhubname", "sas_key_name": "saskeyname", "sas_key": "saskey"}}
